@@ -1,5 +1,4 @@
 #include <fcntl.h>
-#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -339,11 +338,13 @@ void cleanup_command(Command *cmd) {
 
 // Built-in command implementations
 int shell_exit(char **args) {
+  (void)args; // Suppress unused parameter warning
   printf("Exiting shell...\n");
   return 1;
 }
 
 int shell_pwd(char **args) {
+  (void)args; // Suppress unused parameter warning
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL) {
     printf("%s\n", cwd);
@@ -379,6 +380,7 @@ int shell_echo(char **args) {
 }
 
 int shell_help(char **args) {
+  (void)args; // Suppress unused parameter warning
   printf("=== Mini Shell Help ===\n");
   printf("Built-in commands:\n");
   printf("  exit    - Exit the shell\n");
